@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- saved from url=(0127)http://native.sharethrough.com/match-user/match-user.html?source_id=0e8893f90b606c9c5d33f1be&source_user_id=7716658212208382510 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <script>
+      function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+      }
+
+      STRJs = document.createElement('script');
+      source_id = getURLParameter('source_id');
+      source_user_id = getURLParameter('source_user_id');
+      if( source_id && source_user_id )
+      {
+	      STRJs.setAttribute('src','/assets/sfp-user-match.js');
+	      STRJs.setAttribute('data-id', 'STR_DSP_ID');
+	      STRJs.setAttribute('data-source-id', source_id);
+	      STRJs.setAttribute('data-source-user-id', source_user_id);
+	      document.head.appendChild(STRJs);
+	    }
+    </script><script src="sfp-user-match.js" data-id="STR_DSP_ID" data-source-id="0e8893f90b606c9c5d33f1be" data-source-user-id="7716658212208382510"></script>
+  </head>
+  <body>
+  
+</body></html>

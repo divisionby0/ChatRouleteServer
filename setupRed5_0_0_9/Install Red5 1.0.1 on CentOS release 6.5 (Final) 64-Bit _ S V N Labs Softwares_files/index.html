@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- saved from url=(0164)https://s0.2mdn.net/ads/richmedia/studio/pv2/36997275/20150615035845021/Google_SMB_250x250/index.html?e=69&renderingType=2&leftOffset=0&topOffset=0&c=cSWXVLg5T3&t=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="Google_SMB" content="content" charset="UTF-8" lang="sv">
+	<script src="Enabler_01_68.js"> </script>
+	<link href="css(2)" rel="stylesheet" type="text/css">
+	<script src="TweenLite.min.js"></script>
+	<script src="TimelineLite.min.js"></script>
+	<script src="EasePack.min.js"></script>
+	<script src="CSSPlugin.min.js"></script>
+	<script type="text/javascript" src="rehab.js"></script>
+	<script src="rehab_dc.js"></script>
+	
+	<style type="text/css">
+		html {
+			-webkit-font-smoothing: antialiased;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		body { margin: 0; }
+		}
+	</style>
+
+	<script type="text/javascript">
+	var rehab = rehab || {};
+	rehab.main = function() {
+
+		rehab.main.init = function () {
+			var width = 250;
+			var height = 250;
+			var loopStop = false;
+
+			//create dynamic divs
+			var banner = rehab.createElement({background: "#FFF", width: width, height: height, overflow: "hidden", border: "1px solid #000", boxSizing: "border-box", cursor: "pointer", parent: document.body});
+			var introFade = rehab.createElement({background: "#FFF", width: width, height: height, zIndex: 12, parent: banner});
+
+			var images = [
+				"ctaTxt.png",
+				"video_bg.jpg"
+			];
+
+			var businessTypes = [];
+
+			var texts = [];
+
+			var video_webm = "placeholder_250x125.webm";
+			var video_mp4 = "placeholder_250x125.mp4";
+			var videoPoster = "";
+
+			/*=============================================
+			=            Setup dynamic content            =
+			=============================================*/
+
+
+			// Dynamic Content variables and sample values
+			Enabler.setProfileId(1049220);
+			var devDynamicContent = {};
+
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1= [{}];
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0]._id = 0;
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].BUSINESS_TYPE = "Type1";
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].COPY1 = "Whatever your business does1";
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].COPY2 = "Grow your business with video ads1";
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].WEBM_250x250 = {};
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].MP4_250x250 = {};
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].WEBM_250x250.Progressive_Url = "";
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].MP4_250x250.Progressive_Url = "";
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].POSTER_250x250 = {};
+			devDynamicContent.Google_Youtube_SMB_Relaunch_Type1[0].POSTER_250x250.Url = "";
+			Enabler.setDevDynamicContent(devDynamicContent);
+
+		    var dynamicFeed = dynamicContent.Google_Youtube_SMB_Relaunch_Type1[0];
+
+		    // get dynamic values
+		    businessTypes.push(dynamicFeed.BUSINESS_TYPE);
+
+		    texts.push(dynamicFeed.COPY1);
+		    texts.push(dynamicFeed.COPY2);
+
+		    if (dynamicFeed.WEBM_250x250.Progressive_Url !== "") video_webm = dynamicFeed.WEBM_250x250.Progressive_Url;
+		    if (dynamicFeed.MP4_250x250.Progressive_Url !== "") video_mp4 = dynamicFeed.MP4_250x250.Progressive_Url;
+		    videoPoster = dynamicFeed.POSTER_250x250.Url;
+
+		    // loop through texts and remove any line breaks
+		    for (var i = 0; i < texts.length; i++) {
+		    	texts[i] = texts[i].replace(/<br>/gi, " ");
+		    }
+			
+			/*-----  End of Setup dynamic content  ------*/
+
+
+			rehab.main.politeLoad = function () {
+				// polite load images
+				rehab.preloadImages(images, function () {
+
+					// rehab.createElement({backgroundImage: "guide2.jpg", parent: banner});
+					// create dynamic divs
+					var video = rehab.createElement({
+						type: "video",
+						autoplay: true,
+						loop: true,
+						preload: true,
+						poster: videoPoster,
+						sources: [{url: video_webm, type: "video/webm"}, {url: video_mp4, type: "video/mp4"}],
+						parent: banner
+					});
+
+					video.addEventListener("loadeddata", runBanner);
+
+					function runBanner () {
+
+						// txt1
+						var txt1Container = rehab.createElement({overflow: "hidden", top: 137, width: width, parent: banner});
+						var txt1 = rehab.createElement({innerHTML: businessTypes[0], fontSize: "16px", lineHeight: "16px", fontFamily: "Open Sans", fontWeight: 100, parent: txt1Container});
+						// "masks" the edges of the text
+						rehab.createElement({background: "#FFF", left: 0, width: 10, height: "100%", parent: txt1Container});
+						rehab.createElement({background: "#FFF", right: 0, width: 10, height: "100%", parent: txt1Container});
+						// red borders
+						rehab.createElement({background:"#e6301c", width: 2, height: 5, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", width: 5, height: 2, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", bottom: 0, width: 2, height: 5, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", bottom: 0, width: 5, height: 2, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", right: 0, width: 2, height: 5, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", right: 0, width: 5, height: 2, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", right: 0, bottom: 0, width: 2, height: 5, parent: txt1Container});
+						rehab.createElement({background:"#e6301c", right: 0, bottom: 0, width: 5, height: 2, parent: txt1Container});
+
+						// set width, height and center
+						txt1Container.set({width: parseInt(window.getComputedStyle(txt1).width)+40, height: parseInt(window.getComputedStyle(txt1).height)+8}); txt1Container.centerHorizontal();
+						txt1.set({width: txt1Container.get("width"), textAlign: "center", height: window.getComputedStyle(txt1).height}); txt1.centerVertical();
+
+						// loop through businessTypes and create timeline
+						txt1Container.tl = new TimelineLite()
+						.from(txt1Container, 0.5, {height: 0, y: txt1Container.get("height")/2, ease: Power2.easeInOut})
+						.from(txt1Container, 0.5, {width: 20, ease: Power2.easeInOut}, "-=0.2")
+						.from(txt1, 0.3, {alpha: 0}, "-=0.5");
+
+						for (var i = 1; i < businessTypes.length; i++) {
+							txt1Container.tl.add(createTxt(businessTypes[i]));
+						}
+
+						// this function creates a timeline for every "business type" text and returns it
+						function createTxt (txt) {
+							// create a temporary element to get width and height
+							var tempTxt = rehab.createElement({innerHTML: txt, fontSize: "16px", lineHeight: "16px", fontFamily: "Open Sans", visibility: "hidden", parent: banner});
+							var newStyle = getComputedStyle(tempTxt);
+
+							var tl = new TimelineLite()
+							.to(txt1Container, 0.5, {width: 15, ease: Power2.easeInOut}, "+=0.5")
+							.to(txt1, 0.2, {alpha: 0}, "-=0.2")
+							.call(function () { txt1.innerHTML = txt; txt1.set({width: newStyle.width, height: newStyle.height});}) // updates the width and height to match new text
+							.to(txt1, 0.2, {alpha: 1})
+							.to(txt1Container, 0.5, {width: parseInt(newStyle.width)+40, ease: Power2.easeInOut}, "-=0.2");
+
+							// txt1Container.tl.add(tl);
+							return tl;
+
+						}
+
+						// txt 2
+						var txt2 = rehab.createElement({innerHTML: texts[0], width: width, textAlign: "center", fontSize: "14px", lineHeight: "19px", fontFamily: "Open Sans", fontWeight: 100, top: 171, parent: banner});
+						// set width
+						// txt2.set({width: window.getComputedStyle(txt2).width}); txt2.centerHorizontal();
+						txt2.tl = new TimelineLite()
+						.from(txt2, 0.5, {alpha: 0, ease: Power1.easeInOut})
+						.to(txt2, 0.5, {alpha: 0, ease: Power1.easeInOut}, "+=1.7");
+
+						txt2.out = new TimelineLite()
+						.to(txt2, 0.5, {alpha: 0, ease: Power1.easeInOut});
+
+						txt2.in = new TimelineLite()
+						.to(txt2, 0.5, {alpha: 1, ease: Power1.easeInOut});
+
+						// txt 3
+						var txt3 = rehab.createElement({innerHTML: texts[1], width: width, textAlign: "center", fontSize: "14px", lineHeight: "19px", fontFamily: "Open Sans", fontWeight: 100, top: 171, parent: banner});
+						// set width
+						// txt3.set({width: window.getComputedStyle(txt3).width}); txt3.centerHorizontal();
+						txt3.tl = new TimelineLite()
+						.from(txt3, 0.5, {alpha: 0, ease: Power1.easeInOut});
+
+						txt3.out = new TimelineLite()
+						.to(txt3, 0.5, {alpha: 0, ease: Power1.easeInOut});
+
+						txt3.in = new TimelineLite()
+						.to(txt3, 0.5, {alpha: 1, ease: Power1.easeInOut});
+
+						// youtube logo
+						var logo = rehab.createElement({backgroundImage: "youtube_logo.png", left: 12, top: 218, retina: true, parent: banner});
+						// logo.tl = new TimelineLite()
+						// .from(logo, 0.7, {alpha: 0, ease: Power1.easeInOut});
+
+						// cta
+						var cta = rehab.createElement({backgroundColor: "#4f89ff", width: 140, height: 33, left: 100, top: 208, boxShadow: "0 1px 1px rgba(0, 0, 0, 0.3)", borderRadius: 2, scale: 1, retina: true, zIndex: 11, parent: banner});
+						//ctaTxt
+						rehab.createElement({backgroundImage: "ctaTxt.png", left: -3, top: 1, retina: true, parent: cta});
+						// cta.tl = new TimelineLite()
+						// .from(cta, 0.7, {alpha: 0, ease: Power1.easeInOut});
+
+						/*====================================
+						=            mouse events            =
+						====================================*/
+						cta.addEventListener("mouseover", function () {
+							TweenLite.to(cta, 0.5, {backgroundColor: "#699aff", boxShadow: "0 5px 10px rgba(0, 0, 0, 0.3)", autoRound: false});
+						});
+
+						cta.addEventListener("mouseout", function () {
+							TweenLite.to(cta, 0.5, {backgroundColor: "#4f89ff", boxShadow: "0 1px 1px rgba(0, 0, 0, 0.3)", autoRound: false});
+						});
+
+						banner.addEventListener("click", function () {
+							Enabler.exit("clickthrough");
+							video.pause();
+							loopStop = true;
+							mainTimeline.seek(mainTimeline.totalDuration());
+						});
+
+						/*=====================================
+						=            main timeline            =
+						=====================================*/
+
+						// main timeline
+						var mainTimeline = new TimelineLite()
+						.addLabel("start", 0.3)
+						.add(txt1Container.tl, "start")
+						.add(txt2.tl, "start+=1")
+						.add(txt3.tl, "start+=3.7")
+						// .add(logo.tl, "-=0.5")
+						// .add(cta.tl, "-=0.5")
+						.addLabel("loop")
+						.add(txt3.out, "loop+=3.5")
+						.add(txt2.in)
+						.add(txt2.out, "+=2.5")
+						.add(txt3.in)
+						.call(function () { if (!loopStop) mainTimeline.seek("loop"); });
+
+						//loopstop
+						TweenLite.lagSmoothing(0);
+						TweenLite.delayedCall(27, function () {
+							video.pause();
+							video.currentTime = 7.566643;
+							loopStop = true;
+						});
+
+						//fade out introFade
+						TweenLite.to(introFade, 0.3, {autoAlpha: 0});
+					}
+
+				});
+				
+			};
+		};
+
+		// dc stuff
+		rehab.dc.init({
+			onInit: function() {
+				rehab.main.init();
+			},
+			onPolite: function() {
+				rehab.main.politeLoad();
+			},
+			onVisible: function() {
+			
+			}
+		});
+		
+	};
+
+	</script>
+
+</head>
+<body onload="rehab.main()">
+<div style="position: absolute; cursor: pointer; box-sizing: border-box; border: 1px solid rgb(0, 0, 0); overflow: hidden; height: 250px; width: 250px; background: rgb(255, 255, 255);"><div style="position: absolute; z-index: 12; height: 250px; width: 250px; visibility: hidden; opacity: 0; background: rgb(255, 255, 255);"></div><video autoplay="" loop="" poster="https://s0.2mdn.net/ads/richmedia/studio/37028269/35258256_20150612064453234_breakdancing_250x250.jpg" preload="true" style="position: absolute;"><source src="https://gcdn.2mdn.net/videoplayback/id/cb374e84172b1f97/itag/15/source/doubleclick/requiressl/yes/ratebypass/yes/mime/video%2Fwebm/ip/0.0.0.0/ipbits/0/expire/2144448000/sparams/ip,ipbits,expire,id,itag,source,requiressl,ratebypass,mime/signature/382F909EF1DD6D454B8C42686061FA8BFBE4588F.0D329345749BA9FA55A6348EA7463968ACA33488/key/ck2/file/file.webm" type="video/webm"><source src="https://gcdn.2mdn.net/videoplayback/id/6456c2ab1090b853/itag/15/source/doubleclick/requiressl/yes/ratebypass/yes/mime/video%2Fmp4/ip/0.0.0.0/ipbits/0/expire/2144448000/sparams/ip,ipbits,expire,id,itag,source,requiressl,ratebypass,mime/signature/7CA5891CD6ACFBF4D1A187E992F4AAE872E1518E.04F38813176E3D367D10F078721387F1C6FF537D/key/ck2/file/file.mp4" type="video/mp4"></video><div style="position: absolute; width: 175px; top: 137px; overflow: hidden; height: 24px; margin-right: auto; margin-left: auto; right: 0px; left: 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; font-weight: 100; font-family: &#39;Open Sans&#39;; line-height: 16px; font-size: 16px; height: 16px; text-align: center; width: 175px; margin-bottom: auto; margin-top: auto; bottom: 0px; top: 0px; opacity: 1;">YouTube Video Ads</div><div style="position: absolute; height: 100%; width: 10px; left: 0px; background: rgb(255, 255, 255);"></div><div style="position: absolute; height: 100%; width: 10px; right: 0px; background: rgb(255, 255, 255);"></div><div style="position: absolute; height: 5px; width: 2px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 2px; width: 5px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 5px; width: 2px; bottom: 0px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 2px; width: 5px; bottom: 0px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 5px; width: 2px; right: 0px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 2px; width: 5px; right: 0px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 5px; width: 2px; bottom: 0px; right: 0px; background: rgb(230, 48, 28);"></div><div style="position: absolute; height: 2px; width: 5px; bottom: 0px; right: 0px; background: rgb(230, 48, 28);"></div></div><div style="position: absolute; top: 171px; font-weight: 100; font-family: &#39;Open Sans&#39;; line-height: 19px; font-size: 14px; text-align: center; width: 250px; opacity: 0;">Whatever your business does</div><div style="position: absolute; top: 171px; font-weight: 100; font-family: &#39;Open Sans&#39;; line-height: 19px; font-size: 14px; text-align: center; width: 250px; opacity: 1;">Grow your business with YouTube</div><div style="position: absolute; z-index: 11; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 1px 0px; top: 208px; left: 100px; height: 33px; width: 140px; background-color: rgb(79, 137, 255);"><div style="height: 33px; width: 144px; position: absolute; top: 1px; left: -3px; background-image: url(&quot;https://s0.2mdn.net/ads/richmedia/studio/pv2/36997275/20150615035845021/Google_SMB_250x250/ctaTxt.png&quot;); background-size: contain; background-repeat: no-repeat;"></div></div><div style="height: 23px; width: 55px; position: absolute; top: 218px; left: 12px; background-image: url(&quot;https://s0.2mdn.net/ads/richmedia/studio/pv2/36997275/20150615035845021/Google_SMB_250x250/youtube_logo.png&quot;); background-size: contain; background-repeat: no-repeat;"></div></div></body></html>

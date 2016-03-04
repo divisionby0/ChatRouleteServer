@@ -1,0 +1,11 @@
+cd /usr/local/src
+tar zxvf red5-0.9.1.tar.gz
+mv /usr/local/src/red5-0.9.1 /usr/local/red5
+
+wget -O /etc/init.d/red5 http://www.sohailriaz.com/downloads/red5.txt
+chmod +x /etc/init.d/red5
+
+chmod +x red5-debug.sh
+chmod +x red5-highperf.sh
+chmod +x red5-shutdown.sh
+chmod +x red5.sh

@@ -1,0 +1,10 @@
+version 0.0.9
+installed at /usr/local/red5
+
+application ChatRouleteServer + live (to send media streams)
+
+service red5 start
+service red5 stop
+service red5 status
+
+http://chatochat.com:5080
