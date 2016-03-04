@@ -8,7 +8,7 @@ public class FindUserOpponent extends BaseLogger {
 	public User execute(User user, Users users){
 		//log("Find user "+user.getStreamId()+" opponent");
 		if(users.size()<2){
-			error("only one user at collection");
+			//error("only one user at collection");
 			return null;
 		}
 		//log("FindUserOpponent user = "+user.getStreamId());
