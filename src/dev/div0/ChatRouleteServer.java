@@ -12,6 +12,7 @@ import dev.div0.users.collection.operations.CreateUser;
 import dev.div0.users.collection.operations.FindUserOpponent;
 import dev.div0.users.collection.operations.GetUserByConnection;
 import dev.div0.users.collection.operations.RemoveUser;
+import dev.div0.version.Version;
 
 public class ChatRouleteServer extends LoggingAppAdapter implements ApplicationEventPublisherAware, IUserRequests
 {	
@@ -20,8 +21,11 @@ public class ChatRouleteServer extends LoggingAppAdapter implements ApplicationE
 	private ApplicationEventListener eventListener;
 	private ApplicationEventPublisher eventPublisher;
 	
+	private String version = new Version().getVersion();
+	
 	public ChatRouleteServer(ApplicationEventListener eventListener){
 		super();
+		log("ChatRouleteServer "+version);
 		this.eventListener = eventListener;
 		eventListener.setCallbackReceiver(this);
 		createUsersCollection();
